@@ -5,3 +5,5 @@ const routes = new Router();
 routes.get('/', (req, res) => {
     return res.json({ "message": "Funciona" });
   })
+
+export default routes;
