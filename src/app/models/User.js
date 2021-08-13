@@ -1,4 +1,5 @@
 import { Sequelize, Model } from 'sequelize';
+import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 
 class User extends Model {
@@ -38,6 +39,7 @@ class User extends Model {
 
     this.addHook('beforeCreate', async (user) => {
       user.uuid = uuidv4();
+
       const now = new Date();
       user.updated_at = now;
       user.created_at = now;
@@ -46,6 +48,10 @@ class User extends Model {
     this.addHook('beforeSave', async (user) => {
       const now = new Date();
       user.updated_at = now;
+
+      if (user.password) {
+        user.password_hash = await bcrypt.hash(user.email + user.password, 8);
+      }
     });
 
     return this;
