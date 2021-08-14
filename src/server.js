@@ -1,3 +1,3 @@
 import App from './app';
 
-App.listen(443);
+App.listen(process.env.INTERNAL_PORT);
