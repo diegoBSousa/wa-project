@@ -32,23 +32,14 @@ class User extends Model {
       },
       {
         sequelize,
-        timestamps: false,
-        underscored: true,
       }
     );
 
     this.addHook('beforeCreate', async (user) => {
       user.uuid = uuidv4();
-
-      const now = new Date();
-      user.updated_at = now;
-      user.created_at = now;
     });
 
     this.addHook('beforeSave', async (user) => {
-      const now = new Date();
-      user.updated_at = now;
-
       if (user.password) {
         user.password_hash = await bcrypt.hash(user.email + user.password, 8);
       }
