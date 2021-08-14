@@ -6,26 +6,22 @@ services:
     image: postgres:latest
     container_name: wa-postgresql-container
     ports:
-      - "5432:5432"
+      - "${POSTGRES_BIND_PORT}:5432"
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
-      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - PGDATA=${POSTGRES_DATA}
     volumes:
-      - ./.docker/postgres/data:/var/lib/postgresql/data/pgdata
+      - ./.docker/postgres/data:${POSTGRES_DATA}
     networks:
       - wa-network
 
   node:
     container_name: wa-application-container
     image: node
-    #build:
-    #  dockerfile: ./docker/Dockerfile
-    #  context: .
     working_dir: /var/www/app
     volumes:
     - ./:/var/www/app
-    #entrypoint: ./.docker/docker-entrypoint.sh
     command: bash -c 'npm i --silent && npm run dev'
     networks:
         - wa-network
