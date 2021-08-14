@@ -3,8 +3,8 @@ version: '3'
 services:
 
   postgres:
-    image: postgres:latest
     container_name: wa-postgresql-container
+    image: postgres:latest
     ports:
       - "${POSTGRES_BIND_PORT}:5432"
     environment:
@@ -19,6 +19,8 @@ services:
   node:
     container_name: wa-application-container
     image: node
+    ports:
+      - "${NODE_BIND_PORT}:3333"
     working_dir: /var/www/app
     volumes:
     - ./:/var/www/app

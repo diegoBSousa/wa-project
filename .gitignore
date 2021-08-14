@@ -4,3 +4,4 @@ vendor
 logs
 yarn.lock
 .env
+package-lock.json
