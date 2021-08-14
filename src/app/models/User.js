@@ -1,4 +1,4 @@
-import { Sequelize, Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,21 +14,6 @@ class User extends Model {
         email: Sequelize.STRING,
         password_hash: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
-        updated_at: {
-          type: Sequelize.DATE,
-          allowNull: false,
-          defaultValue: Sequelize.NOW,
-          validate: {
-            isDate: true,
-          },
-        },
-        created_at: {
-          type: Sequelize.DATE,
-          allowNull: true,
-          validate: {
-            isDate: true,
-          },
-        },
       },
       {
         sequelize,
@@ -46,6 +31,10 @@ class User extends Model {
     });
 
     return this;
+  }
+
+  verifyPassword(email, password) {
+    return bcrypt.compare(email + password, this.password_hash);
   }
 }
 
