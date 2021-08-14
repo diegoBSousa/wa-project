@@ -1,3 +1,3 @@
 import App from './app';
 
-App.listen(process.env.INTERNAL_PORT);
+App.listen(process.env.PORT);
