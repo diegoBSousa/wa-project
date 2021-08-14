@@ -28,6 +28,6 @@
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.2",
-    "sequelize-cli": "^6.2.0",
+    "sequelize-cli": "^6.2.0"
   }
 }
