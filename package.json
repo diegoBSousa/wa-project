@@ -5,6 +5,7 @@
   "author": "Diego Brito Sousa <diego@diegosousa.com.br>",
   "license": "MIT",
   "scripts": {
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "dev:debug": "nodemon --inspect src/server.js",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write"
