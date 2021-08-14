@@ -21,7 +21,7 @@ services:
     container_name: wa-application-container
     image: node
     ports:
-      - "${NODE_BIND_PORT}:3333"
+      - "${NODE_BIND_PORT}:${NODE_INTERNAL_PORT}"
     working_dir: /var/www/app
     volumes:
     - ./:/var/www/app
