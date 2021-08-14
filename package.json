@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "dev:debug": "nodemon --inspect src/server.js"
+    "dev:debug": "nodemon --inspect src/server.js",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
