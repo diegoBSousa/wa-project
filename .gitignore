@@ -3,6 +3,7 @@ node_modules
 vendor
 logs
 yarn.lock
+yarn-error.log
 .env
 package-lock.json
 .docker
