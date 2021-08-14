@@ -1,7 +1,7 @@
 {
   "name": "wa-project",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "author": "Diego Brito Sousa <diego@diegosousa.com.br>",
   "license": "MIT",
   "scripts": {
