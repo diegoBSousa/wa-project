@@ -1,6 +1,9 @@
+import Laboratory from '../models/Laboratory';
+
 class LaboratoryController {
   async store(req, res) {
-    return res.json({ message: 'ok' });
+    const laboratory = Laboratory.create();
+    return res.json(laboratory);
   }
 }
 
