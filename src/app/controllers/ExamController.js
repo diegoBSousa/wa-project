@@ -58,6 +58,22 @@ class ExamController {
 
     return res.json(exam);
   }
+
+  async delete(req, res) {
+    const exam = await Exam.findByPk(req.params.uuid);
+    if (!exam) {
+      return res.status(400).json({
+        error: `There is not any register with this ID: ${req.params.uuid}`,
+      });
+    }
+
+    await exam.destroy();
+
+    return res.json({
+      message: `The exam ${exam.nome} has been erased`,
+      exam,
+    });
+  }
 }
 
 export default new ExamController();
