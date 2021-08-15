@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+import ExamController from './app/controllers/ExamController';
 import FileController from './app/controllers/FileController';
 import LaboratoryController from './app/controllers/LaboratoryController';
 import LoginController from './app/controllers/LoginController';
@@ -34,5 +35,10 @@ routes.get('/laboratory/', LaboratoryController.index);
  * Files
  */
 routes.post('/files/', updload.single('file'), FileController.store);
+
+/**
+ * Exams
+ */
+routes.post('/exams/', ExamController.store);
 
 export default routes;
