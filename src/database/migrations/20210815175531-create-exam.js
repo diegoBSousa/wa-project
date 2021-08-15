@@ -1,16 +1,18 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    queryInterface.createTable('exams', {
+    await queryInterface.createTable('exams', {
       uuid: {
         type: Sequelize.UUID,
+        allowNull: false,
         primaryKey: true,
+        defaultValue: Sequelize.literal('uuid_generate_v4()'),
       },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       tipo: {
-        type: Sequelize.ENUM('análise clínica', 'imagem'),
+        type: Sequelize.ENUM('analise_clinica', 'imagem'),
         allowNull: false,
       },
       status: {

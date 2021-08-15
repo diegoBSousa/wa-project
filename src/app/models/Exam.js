@@ -14,7 +14,7 @@ class Exam extends Model {
           allowNull: false,
         },
         tipo: {
-          type: Sequelize.ENUM('análise clínica', 'imagem'),
+          type: Sequelize.ENUM('analise_clinica', 'imagem'),
           allowNull: false,
         },
         status: {

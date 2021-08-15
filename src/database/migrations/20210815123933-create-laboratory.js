@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    queryInterface.createTable('laboratories', {
+    await queryInterface.createTable('laboratories', {
       uuid: {
         type: Sequelize.UUID,
         allowNull: false,
