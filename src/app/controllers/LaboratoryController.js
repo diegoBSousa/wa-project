@@ -60,6 +60,22 @@ class LaboratoryController {
 
     return res.json(laboratory);
   }
+
+  async delete(req, res) {
+    const laboratory = await Laboratory.findByPk(req.params.uuid);
+    if (!laboratory) {
+      return res.status(400).json({
+        error: `There is not any register with this ID: ${req.params.uuid}`,
+      });
+    }
+
+    await laboratory.destroy();
+
+    return res.json({
+      message: `Laboratory ${laboratory.nome} has been erased`,
+      laboratory,
+    });
+  }
 }
 
 export default new LaboratoryController();
