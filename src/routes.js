@@ -24,5 +24,6 @@ routes.get('/users/', UserController.index);
 routes.post('/laboratory/', LaboratoryController.store);
 routes.put('/laboratory/:uuid/', LaboratoryController.update);
 routes.delete('/laboratory/:uuid', LaboratoryController.delete);
+routes.get('/laboratory', LaboratoryController.index);
 
 export default routes;
