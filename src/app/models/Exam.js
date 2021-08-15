@@ -9,15 +9,9 @@ class Exam extends Model {
           type: Sequelize.UUID,
           primaryKey: true,
         },
-        laboratory_uuid: {
-          type: Sequelize.UUID,
-          allowNull: true,
-          references: {
-            model: 'laboratories',
-            key: 'uuid',
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'SET NULL',
+        nome: {
+          type: Sequelize.STRING,
+          allowNull: false,
         },
         tipo: {
           type: Sequelize.ENUM('Análise Clínica', 'Imagem'),
@@ -39,13 +33,6 @@ class Exam extends Model {
     });
 
     return this;
-  }
-
-  static associate(models) {
-    this.belongsTo(models.Laboratory, {
-      foreignKey: 'laboratory_uuid',
-      as: 'laboratorio',
-    });
   }
 }
 
