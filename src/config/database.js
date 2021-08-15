@@ -5,6 +5,7 @@ module.exports = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE_NAME,
   define: {
+    paranoid: true,
     timestamps: true,
     underscored: true,
     underscoredAll: true,
