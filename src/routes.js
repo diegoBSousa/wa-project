@@ -41,5 +41,6 @@ routes.post('/files/', updload.single('file'), FileController.store);
  */
 routes.post('/exams/', ExamController.store);
 routes.put('/exams/:uuid/', ExamController.update);
+routes.delete('/exams/:uuid/', ExamController.delete);
 
 export default routes;
