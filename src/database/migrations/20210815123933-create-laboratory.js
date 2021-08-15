@@ -25,9 +25,9 @@ module.exports = {
         allowNull: true,
       },
       status: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.ENUM('Ativo', 'Inativo'),
         allowNull: false,
-        defaultValue: true,
+        defaultValue: 'Ativo',
       },
       created_at: {
         type: Sequelize.DATE,
