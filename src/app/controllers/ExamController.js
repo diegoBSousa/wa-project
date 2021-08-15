@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import * as Yup from 'yup';
 import Exam from '../models/Exam';
 
@@ -76,12 +77,24 @@ class ExamController {
   }
 
   async index(req, res) {
+    let whereStatement = {
+      status: 'ativo',
+    };
+
+    if (req.query.nome) {
+      whereStatement = {
+        [Op.and]: [
+          { nome: { [Op.iLike]: `%${req.query.nome}%` } },
+          { status: 'ativo' },
+        ],
+      };
+    }
     const exams = await Exam.findAll({
       attributes: ['uuid', 'nome', 'tipo'],
-      where: { status: 'ativo' },
+      where: whereStatement,
     });
 
-    return res.json({ exams });
+    return res.json({ exams, output: req.query.nome });
   }
 }
 
