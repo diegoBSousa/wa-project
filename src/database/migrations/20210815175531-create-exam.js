@@ -5,16 +5,6 @@ module.exports = {
         type: Sequelize.UUID,
         primaryKey: true,
       },
-      file_uuid: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        references: {
-          model: 'files',
-          key: 'uuid',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      },
       laboratory_uuid: {
         type: Sequelize.UUID,
         allowNull: true,

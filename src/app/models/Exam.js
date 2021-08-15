@@ -9,16 +9,6 @@ class Exam extends Model {
           type: Sequelize.UUID,
           primaryKey: true,
         },
-        file_uuid: {
-          type: Sequelize.UUID,
-          allowNull: false,
-          references: {
-            model: 'files',
-            key: 'uuid',
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE',
-        },
         laboratory_uuid: {
           type: Sequelize.UUID,
           allowNull: true,
@@ -52,8 +42,6 @@ class Exam extends Model {
   }
 
   static associate(models) {
-    this.hasOne(models.File, { foreignKey: 'file_uuid', as: 'arquivo' });
-
     this.belongsTo(models.Laboratory, {
       foreignKey: 'laboratory_uuid',
       as: 'laboratorio',
