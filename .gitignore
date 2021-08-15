@@ -7,3 +7,4 @@ yarn-error.log
 .env
 package-lock.json
 .docker
+tmp
