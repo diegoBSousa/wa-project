@@ -14,7 +14,6 @@ module.exports = {
       endereco_linha_1: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       endereco_linha_2: {
         type: Sequelize.STRING,

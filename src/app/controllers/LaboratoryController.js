@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import * as Yup from 'yup';
 import Laboratory from '../models/Laboratory';
 
@@ -78,6 +79,19 @@ class LaboratoryController {
   }
 
   async index(req, res) {
+    let whereStatement = {
+      status: 'ativo',
+    };
+
+    if (req.query.nome) {
+      whereStatement = {
+        [Op.and]: [
+          { nome: { [Op.iLike]: `%${req.query.nome}%` } },
+          { status: 'ativo' },
+        ],
+      };
+    }
+
     const laboratories = await Laboratory.findAll({
       attributes: [
         'uuid',
@@ -88,6 +102,7 @@ class LaboratoryController {
         'status',
         'updated_at',
       ],
+      where: whereStatement,
     });
 
     return res.json({ laboratories });

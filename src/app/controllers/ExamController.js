@@ -94,7 +94,7 @@ class ExamController {
       where: whereStatement,
     });
 
-    return res.json({ exams, output: req.query.nome });
+    return res.json({ exams });
   }
 }
 
