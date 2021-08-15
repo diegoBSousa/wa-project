@@ -26,9 +26,9 @@ class Laboratory extends Model {
           allowNull: true,
         },
         status: {
-          type: Sequelize.ENUM('Ativo', 'Inativo'),
+          type: Sequelize.ENUM('ativo', 'inativo'),
           allowNull: false,
-          defaultValue: 'Ativo',
+          defaultValue: 'ativo',
         },
       },
       {

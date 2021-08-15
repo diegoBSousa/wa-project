@@ -14,13 +14,13 @@ class Exam extends Model {
           allowNull: false,
         },
         tipo: {
-          type: Sequelize.ENUM('Análise Clínica', 'Imagem'),
+          type: Sequelize.ENUM('análise Clínica', 'imagem'),
           allowNull: false,
         },
         status: {
-          type: Sequelize.ENUM('Ativo', 'Inativo'),
+          type: Sequelize.ENUM('ativo', 'inativo'),
           allowNull: false,
-          defaultValue: 'Ativo',
+          defaultValue: 'ativo',
         },
       },
       {
