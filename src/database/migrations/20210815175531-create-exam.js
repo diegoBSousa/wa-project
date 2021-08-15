@@ -10,6 +10,7 @@ module.exports = {
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       tipo: {
         type: Sequelize.ENUM('analise_clinica', 'imagem'),
