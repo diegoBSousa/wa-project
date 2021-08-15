@@ -76,6 +76,22 @@ class LaboratoryController {
       laboratory,
     });
   }
+
+  async index(req, res) {
+    const laboratories = await Laboratory.findAll({
+      attributes: [
+        'uuid',
+        'nome',
+        'endereco_linha_1',
+        'endereco_linha_2',
+        'endereco_linha_3',
+        'status',
+        'updated_at',
+      ],
+    });
+
+    return res.json({ laboratories });
+  }
 }
 
 export default new LaboratoryController();
