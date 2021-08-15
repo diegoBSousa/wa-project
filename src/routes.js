@@ -16,11 +16,12 @@ routes.post('/login/', LoginController.store);
  *  User
  */
 routes.post('/users/', UserController.store);
-routes.get('/users', UserController.index);
+routes.get('/users/', UserController.index);
 
 /**
  *  Laboratory
  */
-routes.post('/laboratory', LaboratoryController.store);
+routes.post('/laboratory/', LaboratoryController.store);
+routes.put('/laboratory/:uuid/', LaboratoryController.update);
 
 export default routes;

@@ -52,7 +52,7 @@ class LaboratoryController {
     const laboratory = await Laboratory.findByPk(req.params.uuid);
     if (!laboratory) {
       return res.status(400).json({
-        error: `There is not any user with this ID: ${req.params.uuid}`,
+        error: `There is not any register with this ID: ${req.params.uuid}`,
       });
     }
 
