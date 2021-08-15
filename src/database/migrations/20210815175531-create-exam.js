@@ -10,7 +10,7 @@ module.exports = {
         allowNull: false,
       },
       tipo: {
-        type: Sequelize.ENUM('análise Clínica', 'imagem'),
+        type: Sequelize.ENUM('análise clínica', 'imagem'),
         allowNull: false,
       },
       status: {
