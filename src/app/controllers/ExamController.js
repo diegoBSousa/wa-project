@@ -74,6 +74,15 @@ class ExamController {
       exam,
     });
   }
+
+  async index(req, res) {
+    const exams = await Exam.findAll({
+      attributes: ['uuid', 'nome', 'tipo'],
+      where: { status: 'ativo' },
+    });
+
+    return res.json({ exams });
+  }
 }
 
 export default new ExamController();
