@@ -63,4 +63,20 @@ routes.delete(
   BatchController.deleteExam
 );
 
+routes.post(
+  '/batch/laboratory/',
+  upload.single('file'),
+  BatchController.storeLaboratory
+);
+routes.put(
+  '/batch/laboratory/',
+  upload.single('file'),
+  BatchController.updateLaboratory
+);
+routes.delete(
+  '/batch/laboratory/',
+  upload.single('file'),
+  BatchController.deleteLaboratory
+);
+
 export default routes;

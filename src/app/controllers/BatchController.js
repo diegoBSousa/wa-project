@@ -1,6 +1,7 @@
 import fs from 'fs';
 import * as csv from 'fast-csv';
 import Exam from '../models/Exam';
+import Laboratory from '../models/Laboratory';
 
 class BatchController {
   async storeExam(req, res) {
@@ -102,6 +103,120 @@ class BatchController {
           Exam.findOne({ where: { nome: row.nome } })
             .then((exam) => {
               exam.destroy();
+            })
+            .catch((error) => {
+              res.status(500).json({
+                message: 'Fail to import data into database!',
+                error: error.message,
+              });
+            });
+        }
+      });
+
+    res.status(200).json({
+      message: `Uploaded the file successfully: ${req.file.originalname}`,
+    });
+  }
+
+  async storeLaboratory(req, res) {
+    const data = [];
+    const { path } = req.file;
+
+    fs.createReadStream(path)
+      .pipe(csv.parse({ headers: true }))
+      .on('error', (error) => {
+        throw error.message;
+      })
+      .on('data', (row) => {
+        data.push(row);
+      })
+      .on('end', () => {
+        Laboratory.bulkCreate(data, { individualHooks: true })
+          .then(() => {
+            res.status(200).json({
+              message: `Uploaded the file successfully: ${req.file.originalname}`,
+            });
+          })
+          .catch((error) => {
+            res.status(500).json({
+              message:
+                'Fail to import data into database! ' +
+                'Some data may already exists on database',
+              error: error.message,
+            });
+          });
+      });
+  }
+
+  async updateLaboratory(req, res) {
+    const { path } = req.file;
+
+    fs.createReadStream(path)
+      .pipe(csv.parse({ headers: true }))
+      .on('error', (error) => {
+        throw error.message;
+      })
+      .on('data', (row) => {
+        if (row.uuid) {
+          Laboratory.findByPk(row.uuid)
+            .then((laboratory) => {
+              laboratory.update(row);
+            })
+            .catch((error) => {
+              res.status(500).json({
+                message:
+                  'Fail to import data into database! ' +
+                  'Some data may already exists on database',
+                error: error.message,
+              });
+            });
+        }
+        if (row.nome) {
+          Laboratory.findOne({ where: { nome: row.nome } })
+            .then((laboratory) => {
+              laboratory.update(row);
+            })
+            .catch((error) => {
+              res.status(500).json({
+                message:
+                  'Fail to import data into database! ' +
+                  'Some data may already exists on database',
+                error: error.message,
+              });
+            });
+        }
+      });
+
+    res.status(200).json({
+      message: `Uploaded the file successfully: ${req.file.originalname}`,
+    });
+  }
+
+  async deleteLaboratory(req, res) {
+    const { path } = req.file;
+
+    fs.createReadStream(path)
+      .pipe(csv.parse({ headers: true }))
+      .on('error', (error) => {
+        throw error.message;
+      })
+      .on('data', (row) => {
+        if (row.uuid) {
+          Laboratory.findByPk(row.uuid)
+            .then((laboratory) => {
+              laboratory.destroy();
+            })
+            .catch((error) => {
+              res.status(500).json({
+                message: 'Fail to import data into database! ',
+                error: error.message,
+              });
+            });
+        }
+        if (row.nome) {
+          Laboratory.findOne({ where: { nome: row.nome } })
+            .then((laboratory) => {
+              laboratory.destroy();
             })
             .catch((error) => {
               res.status(500).json({
