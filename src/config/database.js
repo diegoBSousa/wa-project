@@ -11,6 +11,9 @@ module.exports = {
     underscoredAll: true,
   },
   dialectOptions: {
-    ssl: true,
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 };
