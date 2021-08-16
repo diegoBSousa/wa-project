@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import * as Yup from 'yup';
 import Exam from '../models/Exam';
+import Laboratory from '../models/Laboratory';
 
 class ExamController {
   async store(req, res) {
@@ -89,9 +90,14 @@ class ExamController {
         ],
       };
     }
+
     const exams = await Exam.findAll({
       attributes: ['uuid', 'nome', 'tipo'],
       where: whereStatement,
+      include: {
+        model: Laboratory,
+        as: 'Laboratories',
+      },
     });
 
     return res.json({ exams });
