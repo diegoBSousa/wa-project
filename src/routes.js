@@ -14,7 +14,13 @@ import multerConfig from './config/multer';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.get('/', (req, res) => res.json({ message: 'Funciona' }));
+const presentation = {
+  Author: 'Diego Sousa',
+  Application: 'WA Project',
+  Version: '1.0.0',
+  Github: 'https://github.com/diegoBSousa/wa-project',
+};
+routes.get('/', (req, res) => res.json({ presentation }));
 
 /**
  *  Login
