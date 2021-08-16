@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+import BatchController from './app/controllers/BatchController';
 import ExamController from './app/controllers/ExamController';
 import FileController from './app/controllers/FileController';
 import LaboratoryController from './app/controllers/LaboratoryController';
@@ -9,7 +10,7 @@ import UserController from './app/controllers/UserController';
 import multerConfig from './config/multer';
 
 const routes = new Router();
-const updload = multer(multerConfig);
+const upload = multer(multerConfig);
 
 routes.get('/', (req, res) => res.json({ message: 'Funciona' }));
 
@@ -35,7 +36,7 @@ routes.get('/laboratory/', LaboratoryController.index);
 /**
  * Files
  */
-routes.post('/files/', updload.single('file'), FileController.store);
+routes.post('/files/', upload.single('file'), FileController.store);
 
 /**
  * Exams
@@ -50,5 +51,10 @@ routes.get('/exams/', ExamController.index);
  */
 routes.post('/associations/', LaboratoryExamController.store);
 routes.delete('/associations/', LaboratoryExamController.delete);
+
+/**
+ * Batch Files
+ */
+routes.post('/batch/exam/', upload.single('file'), BatchController.storeExam);
 
 export default routes;
