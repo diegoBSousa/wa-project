@@ -57,5 +57,10 @@ routes.delete('/associations/', LaboratoryExamController.delete);
  */
 routes.post('/batch/exam/', upload.single('file'), BatchController.storeExam);
 routes.put('/batch/exam/', upload.single('file'), BatchController.updateExam);
+routes.delete(
+  '/batch/exam/',
+  upload.single('file'),
+  BatchController.deleteExam
+);
 
 export default routes;
