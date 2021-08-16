@@ -15,13 +15,13 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
   copy .env.example .env
   docker-compose up -d
 ```
-    
+
 ## Author
 
 - [Github](https://github.com/diegobsousa)
 - [Linkedin](https://www.linkedin.com/in/diegobritosousa/)
 
-  
+
 ## Roadmap
 
 - Deve ser usada linguagem Javascript e princípios REST.
@@ -42,7 +42,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 
 - A listagem de exame deve trazer consigo uma lista de laboratórios onde o mesmo está disponível.
 
-  
+
 ## API Reference
 
 - Os parâmetros que não são especificados para irem na `URL` devem ser enviados em formado **JSON**.
@@ -198,6 +198,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `nome`    | `string` | **Required**. Nome do exame |
@@ -213,6 +214,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uuid`      | `string` | **Required**. Do tipo UUIDv4, serve para identificar o exame a ser atualizado|
@@ -228,6 +230,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uuid`      | `string` | **Required**. Do tipo UUIDv4, serve para identificar o exame a ser apagado|
@@ -243,6 +246,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `nome`    | `string` | **Required**. Nome do laboratório |
@@ -259,6 +263,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uuid`      | `string` | **Required**. Do tipo UUIDv4, serve para identificar o exame a ser atualizado|
@@ -276,6 +281,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Deve ser enviado um arquivo `CSV` dentro de um formulário `multipart/form-data`
 - O campo do formulário que contém o arquivo deve se chamar `file`
 - o arquivo csv deve ter as seguintes colunas abaixo:
+
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uuid`      | `string` | **Required**. Do tipo UUIDv4, serve para identificar o exame a ser atualizado|
@@ -293,4 +299,3 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 - Criar um passo adicional na esteira do GitHub para fazer o build da aplicação e a aplicação chegar pronta para entrega no Heroku
 - Implementar os testes unitários
 
-  
