@@ -3,6 +3,7 @@ import multer from 'multer';
 import ExamController from './app/controllers/ExamController';
 import FileController from './app/controllers/FileController';
 import LaboratoryController from './app/controllers/LaboratoryController';
+import LaboratoryExamController from './app/controllers/LaboratoryExamController';
 import LoginController from './app/controllers/LoginController';
 import UserController from './app/controllers/UserController';
 import multerConfig from './config/multer';
@@ -43,5 +44,10 @@ routes.post('/exams/', ExamController.store);
 routes.put('/exams/:uuid/', ExamController.update);
 routes.delete('/exams/:uuid/', ExamController.delete);
 routes.get('/exams/', ExamController.index);
+
+/**
+ * Association
+ */
+routes.post('/associations/', LaboratoryExamController.store);
 
 export default routes;

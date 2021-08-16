@@ -1,5 +1,6 @@
 import { Op } from 'sequelize';
 import * as Yup from 'yup';
+import Exam from '../models/Exam';
 import Laboratory from '../models/Laboratory';
 
 class LaboratoryController {
@@ -103,6 +104,10 @@ class LaboratoryController {
         'updated_at',
       ],
       where: whereStatement,
+      include: {
+        model: Exam,
+        as: 'Exams',
+      },
     });
 
     return res.json({ laboratories });
