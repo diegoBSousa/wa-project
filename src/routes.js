@@ -24,8 +24,8 @@ routes.post('/login/', LoginController.store);
 /**
  *  User
  */
-routes.post('/users/', UserController.store);
-routes.get('/users/', UserController.index);
+routes.post('/user/', UserController.store);
+routes.get('/user/', UserController.index);
 
 routes.use(AuthorizationMiddleware);
 
@@ -53,16 +53,16 @@ routes.post('/files/', upload.single('file'), FileController.store);
 /**
  * Exams
  */
-routes.post('/exams/', ExamController.store);
-routes.put('/exams/:uuid/', ValidationMiddleware, ExamController.update);
-routes.delete('/exams/:uuid/', ValidationMiddleware, ExamController.delete);
-routes.get('/exams/', ExamController.index);
+routes.post('/exam/', ExamController.store);
+routes.put('/exam/:uuid/', ValidationMiddleware, ExamController.update);
+routes.delete('/exam/:uuid/', ValidationMiddleware, ExamController.delete);
+routes.get('/exam/', ExamController.index);
 
 /**
  * Association
  */
-routes.post('/associations/', LaboratoryExamController.store);
-routes.delete('/associations/', LaboratoryExamController.delete);
+routes.post('/association/', LaboratoryExamController.store);
+routes.delete('/association/', LaboratoryExamController.delete);
 
 /**
  * Batch Files
