@@ -1,5 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 import { v4 as uuidv4 } from 'uuid';
+import Laboratory_Exam from './Laboratory_Exam';
 
 class Exam extends Model {
   static init(sequelize) {
@@ -33,6 +34,14 @@ class Exam extends Model {
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsToMany(models.Laboratory, {
+      foreignKey: 'exam_uuid',
+      through: Laboratory_Exam,
+      as: 'Laboratories',
+    });
   }
 }
 

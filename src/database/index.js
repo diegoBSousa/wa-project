@@ -4,8 +4,9 @@ import Exam from '../app/models/Exam';
 import File from '../app/models/File';
 import Laboratory from '../app/models/Laboratory';
 import User from '../app/models/User';
+import Laboratory_Exam from '../app/models/Laboratory_Exam';
 
-const models = [Exam, File, Laboratory, User];
+const models = [Exam, File, Laboratory, User, Laboratory_Exam];
 
 class Database {
   constructor() {
