@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
+import AuthorizationMiddleware from './app/middlewares/authorization';
+import ValidationMiddleware from './app/middlewares/validation';
 import BatchController from './app/controllers/BatchController';
 import ExamController from './app/controllers/ExamController';
 import FileController from './app/controllers/FileController';
@@ -25,12 +27,22 @@ routes.post('/login/', LoginController.store);
 routes.post('/users/', UserController.store);
 routes.get('/users/', UserController.index);
 
+routes.use(AuthorizationMiddleware);
+
 /**
  *  Laboratory
  */
 routes.post('/laboratory/', LaboratoryController.store);
-routes.put('/laboratory/:uuid/', LaboratoryController.update);
-routes.delete('/laboratory/:uuid/', LaboratoryController.delete);
+routes.put(
+  '/laboratory/:uuid/',
+  ValidationMiddleware,
+  LaboratoryController.update
+);
+routes.delete(
+  '/laboratory/:uuid/',
+  ValidationMiddleware,
+  LaboratoryController.delete
+);
 routes.get('/laboratory/', LaboratoryController.index);
 
 /**
@@ -42,8 +54,8 @@ routes.post('/files/', upload.single('file'), FileController.store);
  * Exams
  */
 routes.post('/exams/', ExamController.store);
-routes.put('/exams/:uuid/', ExamController.update);
-routes.delete('/exams/:uuid/', ExamController.delete);
+routes.put('/exams/:uuid/', ValidationMiddleware, ExamController.update);
+routes.delete('/exams/:uuid/', ValidationMiddleware, ExamController.delete);
 routes.get('/exams/', ExamController.index);
 
 /**
