@@ -49,5 +49,6 @@ routes.get('/exams/', ExamController.index);
  * Association
  */
 routes.post('/associations/', LaboratoryExamController.store);
+routes.delete('/associations/', LaboratoryExamController.delete);
 
 export default routes;
