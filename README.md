@@ -12,7 +12,7 @@ Para instalar o projeto em sua máquina local você precisa ter **Docker Compose
 ```bash
   git clone git@github.com:diegoBSousa/wa-project.git
   cd wa-project
-  copy .env.example .env
+  cp .env.example .env
   docker-compose up -d
 ```
 
