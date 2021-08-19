@@ -1,4 +1,4 @@
-import './config/enviroment';
+import '../enviroment';
 import express from 'express';
 import routes from './routes';
 import './database';
