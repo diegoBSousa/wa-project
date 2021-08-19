@@ -1,5 +1,13 @@
 const config = require('dotenv/config');
+if (process.env.NODE_ENV === 'test') {
+  config({
+    path: '.env.test',
+  });
+}
+
 const { resolve } = require('path');
+
+
 
 module.exports = {
   config: resolve(__dirname, 'src', 'config', 'database.js'),
