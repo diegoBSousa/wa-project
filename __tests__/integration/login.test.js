@@ -32,18 +32,18 @@ describe('GIVEN I have authentication credentials on /login/ route', () => {
 
       expect(response.body).toHaveProperty('token');
     });
+  });
 
-    describe('WHEN I send invalid authentication credentials', () => {
-      it('THEN I receive HTTP Status 401', async () => {
-        const user = await factory.create('User');
+  describe('WHEN I send invalid authentication credentials', () => {
+    it('THEN I receive HTTP Status 401', async () => {
+      const user = await factory.create('User');
 
-        const response = await request.agent(app).post('/login/').send({
-          email: user.email,
-          password: 'wrong password',
-        });
-
-        expect(response.status).toBe(401);
+      const response = await request.agent(app).post('/login/').send({
+        email: user.email,
+        password: 'wrong password',
       });
+
+      expect(response.status).toBe(401);
     });
   });
 });
