@@ -21,6 +21,14 @@ class Database {
         (model) => model.associate && model.associate(this.connection.models)
       );
   }
+
+  truncate() {
+    return Promise.all(
+      Object.keys(models).map((key) =>
+        models[key].destroy({ truncate: true, force: true })
+      )
+    );
+  }
 }
 
 export default new Database();
