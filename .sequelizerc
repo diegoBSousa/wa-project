@@ -1,9 +1,8 @@
-const config = require('dotenv/config');
-if (process.env.NODE_ENV === 'test') {
-  config({
-    path: '.env.test',
-  });
-}
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: process.env.NODE_ENV === 'test' ? '.test.env' : '.env',
+});
 
 const { resolve } = require('path');
 
