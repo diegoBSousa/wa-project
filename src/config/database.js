@@ -1,4 +1,4 @@
-module.exports = {
+const databaseConfig = {
   dialect: 'postgres',
   host: process.env.POSTGRES_HOST,
   username: process.env.POSTGRES_USER,
@@ -12,8 +12,17 @@ module.exports = {
   },
   dialectOptions: {
     ssl: {
-      require: true,
+      require: process.env.POSTGRES_SSL_SUPPORT,
       rejectUnauthorized: false,
     },
   },
 };
+
+if (
+  process.env.NODE_ENV === 'test' ||
+  process.env.POSTGRES_SSL_SUPPORT === false
+) {
+  databaseConfig.dialectOptions = {};
+}
+
+module.exports = databaseConfig;
